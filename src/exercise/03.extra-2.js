@@ -2,9 +2,6 @@
 // 💯 caching in a context provider (exercise)
 // http://localhost:3000/isolated/exercise/03.extra-2.js
 
-// you can edit this here and look at the isolated page or you can copy/paste
-// this in the regular exercise file.
-
 import * as React from 'react'
 import {
   fetchPokemon,
@@ -16,7 +13,7 @@ import {
 import {useAsync} from '../utils'
 
 // 🐨 Create a PokemonCacheContext
-const PokemonCacheContext = React.createContext();
+const PokemonCacheContext = React.createContext()
 
 function PokemonCacheProvider(props) {
   const [cache, dispatch] = React.useReducer(pokemonCacheReducer, {})
@@ -25,7 +22,8 @@ function PokemonCacheProvider(props) {
 
 function useContext(contextToUse) {
   const context = React.useContext(contextToUse)
-  if (!context) throw new Error(`useContext must be used within a ${contextToUse} Provider`)
+  if (!context)
+    throw new Error(`useContext must be used within a ${contextToUse} Provider`)
 
   return context
 }
@@ -42,7 +40,7 @@ function pokemonCacheReducer(state, action) {
 }
 
 function PokemonInfo({pokemonName}) {
-  const [cache, dispatch] = useContext(PokemonCacheContext);
+  const [cache, dispatch] = useContext(PokemonCacheContext)
 
   const {data: pokemon, status, error, run, setData} = useAsync()
 
@@ -73,7 +71,7 @@ function PokemonInfo({pokemonName}) {
 }
 
 function PreviousPokemon({onSelect}) {
-  const [cache] = useContext(PokemonCacheContext);
+  const [cache] = useContext(PokemonCacheContext)
 
   return (
     <div>
